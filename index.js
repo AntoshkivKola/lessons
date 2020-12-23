@@ -1,7 +1,19 @@
+const sum = function(a,b){
+  return a+b;
+}
+const sub = function(a,b){
+  return a-b;
+}
+const mul = function(a,b){
+  return a*b;
+}
+const div = function(a,b){
+  return a/b;
+}
+
 /**  
  * функцыя кадькулятор
- * @returns {number}
-
+ * @returns {number | null}
 */
 const calc = function(){
   const a = +prompt("Вв первое число");
@@ -10,13 +22,15 @@ const calc = function(){
 
   switch(z){
     case "+":{
-      return a + b;
+      return sum(a,b);
     }case "-":{
-      return a - b;
+      return sub(a,b);
     }case "*":{
-      return a * b;
+      return mul(a,b);
     }case "/":{
-      return a / b;
+      return div(a,b);
+    }default:{
+      return null;
     }
   }
 }
