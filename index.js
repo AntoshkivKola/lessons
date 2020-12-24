@@ -13,7 +13,7 @@ const fact = function (num) {
       num--;
     }
     return result;
-  } else if(num === 0){
+  } else if (num === 0) {
     return 1;
   }
   return null;
@@ -27,19 +27,18 @@ const fact = function (num) {
  * @returns {number| null}
   */
 const powwer = function (a, n) {
-  let res = 1;
-  if (n > 0) {
-      for (let i = 0; i < n; i++) {
-        res *= a;
-      }
-    return res;
-  }else if(n === 0){
-    return 1;
-  }else if(n < 0){
-    for (let i = 0; i < -n; i++) {
-      res *= a;
-    }
-    return 1/res;
+  if (n < 0) {
+    const numberToCalcNegativePowwer = powwer(a, -n);
+    return 1 / numberToCalcNegativePowwer;
   }
-  return null;
+  if (n === 0) {
+    return 1;
+  }
+  let res = 1;
+  for (let i = 0; i < n; i++) {
+    res *= a;
+  }
+
+ return res;
+
 }
