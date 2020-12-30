@@ -1,22 +1,31 @@
-function Student(firstName, lastName, age, isMale){
-  this.firstName = firstName;
-  this.lastName - lastName;
-  this.age = age;
-  this.isMale = isMale;
+const Leadder = function (maxStep) {
+  this.value = 0;
+  this.maxStep = maxStep;
 }
 
-function StudentPrototype(){
-  this.toString = function toString(){
-    return `${this.firstName} ${this.lastName}`;
+const LeadderPrototype = function () {
+  this.up = function(){ 
+   
+      if (this.value >= this.maxStep) {
+        return false;
+      }
+      ++this.value;
+      return this;
+     
+    
   }
-  this.sayHello = function sayHello(){
-    return `${this.firstName} ${this.lastName} says "Hello!"`;
+this.down = function down() {
+  if (this.value <= 0) {
+    return false;
   }
-  this.say = function say(message){
-    return `Student ${this.firstName} say:\n${message}`;
-  }
+  --this.value;
+  return this;
+}
+this.showStep = function showStep() {
+  return this.value;
+}
 }
 
-Student.prototype = new StudentPrototype();
+Leadder.prototype = new LeadderPrototype();
 
-const stud1 = new Student('Vlad', 'Test', 3, true);
+const leadder1 = new Leadder(10);
