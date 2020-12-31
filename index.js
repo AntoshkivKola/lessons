@@ -1,31 +1,26 @@
-const Leadder = function (maxStep) {
-  this.value = 0;
-  this.maxStep = maxStep;
-}
+const user = {
+  firstName: "Vasia",
+  lastName: "Testovich",
+  age: 15,
+  isMale: true,
+};
 
-const LeadderPrototype = function () {
-  this.up = function(){ 
-   
-      if (this.value >= this.maxStep) {
-        return false;
-      }
-      ++this.value;
-      return this;
-     
-    
+function sayHello(user) {
+  if (user.age >= ADULT_AGE) {
+    alert(`Hello ${user.firstName}`);
+    return true;
   }
-this.down = function down() {
-  if (this.value <= 0) {
-    return false;
-  }
-  --this.value;
-  return this;
-}
-this.showStep = function showStep() {
-  return this.value;
-}
+  alert(`Good Bay ${user.firstName}`);
+
+  return false;
 }
 
-Leadder.prototype = new LeadderPrototype();
+const PROTOCOL = 'http://';
+const SERVER_IP = 'localhost';
+const PORT = 5500;
 
-const leadder1 = new Leadder(10);
+function createQuery(path){
+  return `${PROTOCOL}${SERVER_IP}:${PORT.toString()}${path}`;
+}
+
+console.log(createQuery("/index.html"));
