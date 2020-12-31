@@ -13,15 +13,8 @@ console.log(createMultiplicationtable());
 
 function cvartal(n) {
   if (n > 12) {
-    return false
+    return false;
   }
-  if (n <= 3) {
-    return 1;
-  } else if (n >= 4 && n <= 6) {
-    return 2;
-  } else if (n >= 7 && n <= 9) {
-    return 3;
-  }
-  return 4
+  return Math.ceil(n/3);
 }
 console.log(cvartal(12));
