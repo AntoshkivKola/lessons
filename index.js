@@ -1,26 +1,27 @@
-const user = {
-  firstName: "Vasia",
-  lastName: "Testovich",
-  age: 15,
-  isMale: true,
-};
+function createMultiplicationtable() {
+  const table = {};
 
-function sayHello(user) {
-  if (user.age >= ADULT_AGE) {
-    alert(`Hello ${user.firstName}`);
-    return true;
+  for (let i = 1; i <= 10; i++) {
+    for (let j = 1; j <= 10; j++) {
+      table[`${i} * ${j} = `] = i * j;
+    }
   }
-  alert(`Good Bay ${user.firstName}`);
 
-  return false;
+  return table;
 }
+console.log(createMultiplicationtable());
 
-const PROTOCOL = 'http://';
-const SERVER_IP = 'localhost';
-const PORT = 5500;
-
-function createQuery(path){
-  return `${PROTOCOL}${SERVER_IP}:${PORT.toString()}${path}`;
+function cvartal(n) {
+  if (n > 12) {
+    return false
+  }
+  if (n <= 3) {
+    return 1;
+  } else if (n >= 4 && n <= 6) {
+    return 2;
+  } else if (n >= 7 && n <= 9) {
+    return 3;
+  }
+  return 4
 }
-
-console.log(createQuery("/index.html"));
+console.log(cvartal(12));
