@@ -1,16 +1,11 @@
-function createFamily() {
-  const countOfRelatives = +prompt('Введите кол-во вашых родствиников');
-  if (isNaN(countOfRelatives)) {
+"use strict";
+
+function getMonthDecade(dayNumber){
+  if(isNaN(dayNumber) || dayNumber >= 32){
     return false;
   }
-  const family = {}
-  let name = '';
-  let info = '';
-  for (let i = 0; i < countOfRelatives; i++) {
-    name = prompt(`Введите имя ${i+1} родствиника: `);
-    info = prompt(`Введите информацыю про ${i+1} родствиника: `);
-    family[name] = info;
+  if(dayNumber === 31){
+    return 3;
   }
-  return family;
+  return Math.ceil(dayNumber / 10);
 }
-console.log(createFamily());
