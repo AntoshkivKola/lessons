@@ -1,11 +1,17 @@
 "use strict";
-
-function getMonthDecade(dayNumber){
-  if(isNaN(dayNumber) || dayNumber >= 32){
-    return false;
-  }
-  if(dayNumber === 31){
-    return 3;
-  }
-  return Math.ceil(dayNumber / 10);
+// Объект с логикой
+function MyArrayProto() {
+  this.push = function push(item) {
+    this[this.length] = item;
+    return ++this.length;
+  };
 }
+
+// Объекты с данными
+function MyArray() {
+  this.length = 0;
+}
+// Создаём прототип(связь между объектами). Наследование
+MyArray.prototype = new MyArrayProto();
+
+const myArray = new MyArray();
