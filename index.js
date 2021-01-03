@@ -46,19 +46,25 @@ const arr = new Array(1, 5, 3, 7);
 // myArray.push(4);
 // myArray.unshift(7, 8, 9);
 
-function AccumulatorPrototype(){
-  this.read = function(){
+function AccumulatorPrototype() {
+  this.checkNumber = function (number) {
+    return (isNaN(number)) || (number < 0);
+  }
+  this.read = function () {
     const userNumber = Number(prompt("Enter a number"));
-    if(isNaN(userNumber)){
-      return NaN;
+    if (this.checkNumber(userNumber)) {
+      return;
     }
     this.value += userNumber;
     return this.value;
   }
+ 
 }
 
-function Accumulator(startingValue){
-  this.value = startingValue;
+function Accumulator(startingValue) {
+  if(!this.checkNumber(startingValue)){
+    this.value = startingValue;
+  }
 }
 
 Accumulator.prototype = new AccumulatorPrototype();
