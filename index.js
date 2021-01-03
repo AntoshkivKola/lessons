@@ -3,8 +3,7 @@
 function MyArrayProto() {
   this.push = function push() {
     for (let i = 0; i < arguments.length; i++) {
-      this[this.length] = arguments[i];
-      ++this.length;
+      this[this.length++] = arguments[i];
     }
     return this.length;
   };
@@ -45,5 +44,5 @@ console.log(arr);
 // myArray.push(2);
 // myArray.push(3);
 // myArray.push(4);
-myArray.unshift(7, 8, 9);
+// myArray.unshift(7, 8, 9);
 console.log(myArray);
