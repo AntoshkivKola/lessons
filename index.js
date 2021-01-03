@@ -31,14 +31,19 @@ function MyArrayProto() {
 // Объекты с данными
 function MyArray() {
   this.length = 0;
+  for(let i = 0; i< arguments.length; i++){
+    this.push(arguments[i]);
+  }
 }
 // Создаём прототип(связь между объектами). Наследование
 MyArray.prototype = new MyArrayProto();
 
-const myArray = new MyArray();
-myArray.push(1);
-myArray.push(2);
-myArray.push(3);
-myArray.push(4);
-myArray.unshift(7,8,9);
+const myArray = new MyArray(1,5,3,7);
+const arr = new Array(1,5,3,7);
+console.log(arr);
+// myArray.push(1);
+// myArray.push(2);
+// myArray.push(3);
+// myArray.push(4);
+myArray.unshift(7, 8, 9);
 console.log(myArray);
