@@ -1,13 +1,21 @@
 'use strict';
 
-const newsPaper = {
-  title: 'FC daily',
-  articles: ['test1', 'test2', 'article1', 'INTERESTING1'],
+const numbers = [1, 2, 21, 54, 84, 7];
+const numbers2 = [1, 5, 7, 8];
 
-  showArticle(){
-    this.articles.forEach((currentArticle, index) => {
-      console.log(`${this.title}: ${index + 1}: ${currentArticle}`);
-    });
-  }
+const resNumbers = [...numbers, ...numbers2];//spread
+console.log(resNumbers);
+
+const sum = (...args) => {//rest
+  let accumulator = null;
+  args.forEach((currentArg) => {
+    accumulator += currentArg;
+  });
+  return accumulator;
 }
-newsPaper.showArticle();
+
+const sumReduse = (...rest) => {
+  return rest.reduce((accumulator, value) => {
+    return accumulator + value;
+  });
+}
