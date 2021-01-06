@@ -6,7 +6,7 @@ const newsPaper = {
 
   showArticle(){
     this.articles.forEach(function(currentArticle, index){
-      console.log(`${index + 1}: ${currentArticle}`);
+      console.log(`${this}${index + 1}: ${currentArticle}`);
     });
   }
 }
