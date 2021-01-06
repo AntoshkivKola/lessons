@@ -25,6 +25,26 @@ function MyArrayProto() {
     }
     return this.length;
   };
+
+  this.every = function every(func){
+
+    for(let i = 0; i < this.length; i++){
+      if(!func(this[i], i, this)){
+        return false;
+      }
+    }
+    return true;
+  }
+
+  this.filter = function filter(func){
+    const newArray = new MyArray();
+    for(let i = 0; i < this.length; i++){
+      if(func(this[i], i, this)){
+        newArray.push(this[i]);
+      }
+    }
+    return newArray;
+  }
 }
 
 // Объекты с данными
