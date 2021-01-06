@@ -1,7 +1,9 @@
-function getFullName() {
-  return `${this.firstName} ${this.lastName}`;
-}
 
+function UserPrototype(){
+  this.getFullName = function getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
 function User(firts, last, age, email, isMale, isSubscibed = false) {
   this.firstName = firts;
   this.lastName = last;
@@ -9,9 +11,9 @@ function User(firts, last, age, email, isMale, isSubscibed = false) {
   this.email = email;
   this.isMale = isMale;
   this.isSubscibed = isSubscibed;
-
-  this.getFullName = getFullName;
 }
+User.prototype = new UserPrototype;
+
 
 function createRandomUsers(amount = 1) {
   const db = [];
