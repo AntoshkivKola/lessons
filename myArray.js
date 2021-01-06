@@ -59,10 +59,10 @@ MyArray.prototype = new MyArrayProto();
 
 const myArray = new MyArray(1, 5, 3, 7);
 const arr = new Array(1, 5, 3, 7);
-console.log(arr);
+//console.log(arr);
 // myArray.push(1);
 // myArray.push(2);
 // myArray.push(3);
 // myArray.push(4);
 // myArray.unshift(7, 8, 9);
-console.log(myArray);
+//console.log(myArray);
