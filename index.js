@@ -1,4 +1,4 @@
-
+'use strict';
 function UserPrototype(){
   this.getFullName = function getFullName() {
     return `${this.firstName} ${this.lastName}`;
