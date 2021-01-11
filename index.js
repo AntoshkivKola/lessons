@@ -7,11 +7,9 @@ function countVowels(str) {
   const strArr = str.toLowerCase().split('');
 
   strArr.forEach((letter) => {
-     vowels.forEach((vL)=>{
-       if(vL === letter){
-         counter++;
-       }
-     })
+    if (vowels.includes(letter)) {
+      counter++;
+    }
   });
 
   return counter;
