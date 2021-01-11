@@ -1,42 +1,19 @@
 'use strict';
 
-const fact = (num) => {
-  if (num < 0) {
-    return false;
-  }
-  if (num === 0 || num === 1) {
-    return 1;
-  }
-  return num * fact(num - 1);
-}
+function countVowels(str) {
+  let counter = null;
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
 
-const powwer = (num, exp) => {
-  let pos = true;
-  if (exp < 0) {
-    exp = -exp;
-    pos = false;
-  }
+  const strArr = str.toLowerCase().split('');
 
-  if (exp === 1) {
-    return num;
-  }
-  if (exp === 0) {
-    return 1;
-  }
-  debugger;
-  const res = num * powwer(num, exp - 1);
+  strArr.forEach((letter) => {
+     vowels.forEach((vL)=>{
+       if(vL === letter){
+         counter++;
+       }
+     })
+  });
 
-  if (pos) {
-    return res
-  }
-  return 1 / res;
-
-}
-
-const par = (num) => {
-  if(num === 1){
-    return '()'
-  }
-  return `(${par(num - 1 )})`;
+  return counter;
 };
-console.log(par(5));
+console.log(countVowels("letter spasing")) // 4
