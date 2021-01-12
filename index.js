@@ -82,7 +82,7 @@ class Fuel {
     this.density = density;
   }
 
-  getFuelWeight() {
+  get fuelWeight() {
     return this.volume * this.density;
   }
 }
@@ -93,13 +93,13 @@ class Auto {
     this.fuel = fuel;
     this.passengers = passengers;
   }
-  getWeightPassengers() {
+  get weightPassengers() {
     let res = 0;
     this.passengers.forEach(elem => res += elem);
     return res;
   }
-  getFullWeight() {
-    return this.fuel.getFuelWeight() + this.ownWeight + this.getWeightPassengers();
+  get fullWeight() {
+    return this.fuel.fuelWeight + this.ownWeight + this.weightPassengers;
   }
 
 }
@@ -117,10 +117,10 @@ class Friend {
   }
 }
 
-// const f95 = new Fuel(5, 1.25);
-// const bmw = new Auto(2305, f95, [70, 50, 30]);
-// console.log(bmw);
-// console.log(bmw.getFullWeight());
+const f95 = new Fuel(5, 1.25);
+const bmw = new Auto(2305, f95, [70, 50, 30]);
+console.log(bmw);
+console.log(bmw.fullWeight);
 const ivan = new Friend("Ivan", 15, null);
 const f1 = new Friend("f1", 14, null);
 const f2 = new Friend("f2", 7, [f1, ivan]);
