@@ -14,12 +14,13 @@ class User{
 }
 
 class Admin extends User{
-  constructor(name, surName, age, isBanned){
-    super(name, surName, age, isBanned)
+  constructor(name, surName, age){
+    super(name, surName, age, false)
   }
   ban(user){
-    user.isBanned = true;
+    user.isBanned = !user.isBanned;
   }
+  
 }
 
 const u = new User('Leopold', 'Vladimirovich', 45);
