@@ -26,6 +26,10 @@ class User {
   get isAdullt() {
     return this.age >= ADULT_AGE;
   }
+
+  static isUser(obj){
+    return obj instanceof User;
+  }
 }
 
 const user = new User('Test', "Testovich", 19);
