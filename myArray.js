@@ -26,24 +26,35 @@ function MyArrayProto() {
     return this.length;
   };
 
-  this.every = function every(func){
+  this.every = function every(func) {
 
-    for(let i = 0; i < this.length; i++){
-      if(!func(this[i], i, this)){
+    for (let i = 0; i < this.length; i++) {
+      if (!func(this[i], i, this)) {
         return false;
       }
     }
     return true;
   }
 
-  this.filter = function filter(func){
+  this.filter = function filter(func) {
     const newArray = new MyArray();
-    for(let i = 0; i < this.length; i++){
-      if(func(this[i], i, this)){
+    for (let i = 0; i < this.length; i++) {
+      if (func(this[i], i, this)) {
         newArray.push(this[i]);
       }
     }
     return newArray;
+  }
+  this.flat = function flat(depth = 1) {
+    let result = new MyArray();
+    this.forEach((item) => {
+      if (MyArray.isMyArray(item) && depth) {
+        result = result.concat(item.flat(depth - 1));
+      } else if (item !== undefined) {
+        result.push(item);
+      }
+    });
+    return result;
   }
 }
 
@@ -54,11 +65,15 @@ function MyArray() {
     this.push(arguments[i]);
   }
 }
+
+MyArray.isMyArray = function isMayArray(obj) {
+  return obj instanceof MyArray();
+}
 // Создаём прототип(связь между объектами). Наследование
 MyArray.prototype = new MyArrayProto();
 
 const myArray = new MyArray(1, 5, 3, 7);
-const arr = new Array(1, 5, 3, 7);
+const arr = new MyArray(0,0,0,0,0,undefined,new MyArray(1,1,1,undefined,new MyArray(2,2,new MyArray(3)),1),undefined,0);
 //console.log(arr);
 // myArray.push(1);
 // myArray.push(2);

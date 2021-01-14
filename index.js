@@ -1,27 +1,39 @@
 'use strict';
 
-class Figure {
-  constructor(name) {
-    this.name = name;
+class Friend {
+  constructor(count = 0, friends = []) {
+    this.count = count;
+    this.friends = friends;
   }
-  getArea() { }
-}
 
-class Circle extends Figure {
-  constructor(radius) {
-    super("Circle");
-    this._radius = radius;
-  }
-  getArea() {
-    return  Math.PI * this._radius * this._radius;
+  countA() {
+    let result = this.count;
+
+
+    if (this.friends.length) {
+      result = this.friends.reduce(
+        (result, friend) => {
+          return result + friend.countA();
+        },
+        this.count
+      );
+    }
+
+    // if (this.friends.length) {
+    //   this.friends.forEach((elem) => {
+    //     if(elem.friends.length){
+    //       result += elem.countA();
+    //     }else{
+    //       result += elem.count;
+    //     }
+    //   });
+    // }
+
+    return result;
   }
 }
-
-function getFigureArea(figure){
-  if(figure instanceof Figure){
-    return figure.getArea();
-  }
-  throw new TypeError();
-}
-
-const c = new Circle(5);
+const f4 = new Friend(4)
+const f3 = new Friend(3)
+const f2 = new Friend(2, [f3, f4])
+const f1 = new Friend(1)
+const me = new Friend(5, [f1, f2]);
