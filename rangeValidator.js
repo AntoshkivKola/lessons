@@ -15,12 +15,18 @@ class RangeValidator {
     if( typeof(newTo) !== 'number'){
       throw new TypeError('this value must be of type number!');
     }
+    if(newTo < this.from ){
+      throw new RangeError('value to must be greater than value from');
+    }
     return this._to = newTo;
   }
-  
+
   set from(newFrom){
     if( typeof(newFrom) !== 'number'){
       throw new TypeError('this value must be of type number!');
+    }
+    if(newFrom > this.to ){
+      throw new RangeError('value from must be less than value to');
     }
     return this._from = newFrom;
   }
@@ -40,10 +46,13 @@ class RangeValidator {
   /**
    * check if a number is in the specified range
    * @param {number} num 
-   * @returns {boolean}
+   * @returns {number}
    */
   validate(num){
-    return (num >= this.from) && (num <= this.to);
+    if((num >= this.from) && (num <= this.to)){
+      return num;
+    }
+    throw new RangeError('the number must be in the range');
   }
 }
 
