@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 // 1) Вывод чисел от 25 до 0 (порядок уменьшения)
 for (let i = 25; i >= 0; i--) {
   console.log(i);
@@ -75,3 +75,4 @@ while (true) {
 do {
   userUnput = Number(prompt(`Решите (2 + 2 * 2)`));
 } while (userUnput !== (2 + 2 * 2));
+*/
