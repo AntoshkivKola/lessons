@@ -11,19 +11,30 @@ class User {
 }
 
 class Student extends User {
+  /**
+   * 
+   * @param {string} name 
+   * @param {string} surName 
+   * @param {number} year 
+   */
   constructor(name, surName, year) {
     super(name, surName);
-    this.year = year;
+    this._year = year;
   }
-  getCourse(currentYear) {
-    const YEAR_OF_GRADUATION = this.year + 4;
-    if (typeof (currentYear) !== 'number') {
-      throw new TypeError('the argument must be a number');
+  get year() {
+    return this._year;
+  }
+  getCourse(currentDate) {
+    if (typeof (currentDate) !== "number") {
+      throw new TypeError('the argument must be a date');
     }
-    if (currentYear > YEAR_OF_GRADUATION || currentYear < this.year) {
-      throw new RangeError('argument must be equal to the year of admission or no more than 5');
+    if (currentDate > this.year + 4) {
+      throw new RangeError('no longer a student');
     }
-    return currentYear - this.year + 1
+    if (currentDate < this.year) {
+      throw new RangeError('not a student yet');
+    }
+    return currentDate - this.year + 1
   }
 }
 
