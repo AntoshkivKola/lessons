@@ -39,3 +39,6 @@ class Student extends User {
 }
 
 const s = new Student('Tets', 'Testovich', 2018);
+console.log(s.getCourse(2000)) // RangeError('not a student yet');
+console.log(s.getCourse(2030)) // RangeError('no longer a student');
+console.log(s.getCourse(2020)) // 3
