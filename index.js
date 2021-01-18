@@ -1,24 +1,82 @@
+class Stack {
+  constructor(maxSize = 10, ...array) {
+    this._maxSize = maxSize;
+    this._size = 0;
 
-const ugaday = () => {
-  let step = 0;
-  let start = 1;
-  let end = 100;
-  let middle = Math.round((start + end) / 2);
+    for (const item of array) {
+      this.push(item);
+    }
+  }
 
-  while (true) {
-    ++step;
-    if (confirm(`Your number = ${middle}`)) {
-      alert(`Your number is: ${middle} I do id for ${step} step's`);
+  get isEmpty() {
+    return this._size === 0;
+  }
+
+  get size() {
+    return this._size;
+  }
+
+  push(value) {
+    if (this.size >= this._maxSize) {
+      throw new RangeError('Stack overflow');
+    }
+    this[`_${this.size}`] = value;
+    this._size++;
+    return this.size;
+  }
+
+  pop() {
+    if (this.size <= 0) {
       return;
     }
-    if (confirm(`Your number > ${middle}`)) {
-      start = middle;
-      middle = Math.floor((start + end) / 2);
-    } else {
-      end = middle;
-      middle = Math.ceil((start + end) / 2);
-    }
+    const lastItem = this[`_${this.size - 1}`];
+    delete this[`_${this.size - 1}`];
+    this._size--;
+    return lastItem;
+  }
+
+  pick() {
+    return this[`_${this.size - 1}`];
   }
 }
 
-ugaday()
+const newStack = new Stack(5, 12, 13, 14, 15);
+
+const checkOfSequence = (symbol, index, arr) => {
+  const open = ['(', '{', '[', '<','0'];
+  const close = [')', '}', ']', '>','1'];
+  const res = close[open.indexOf(symbol)];
+  
+  for (let i = index; i < arr.length; i++) {
+    if (open.includes(arr[i])) {
+      i = checkOfSequence(arr[i], i + 1, arr);
+      if(i === false){
+        return false;
+      }
+      if (open.includes(arr[i])) {
+        i = checkOfSequence(arr[i], i + 1, arr);
+        if(i === false){
+          return false;
+        }
+      }
+    }
+
+    if (arr[i] === res) {
+      return i+1;
+    }
+   
+    if ( close.includes(arr[i])) {
+      return false;
+    }
+
+  }
+  return false;
+}
+
+const checkSequence = (str) => {
+  const arr = str.split('');
+  if(checkOfSequence(arr[0], 1, arr) !== arr.length){
+    return false
+  }
+  return true;
+};
