@@ -43,29 +43,29 @@ class Stack {
 const newStack = new Stack(5, 12, 13, 14, 15);
 
 const checkOfSequence = (symbol, index, arr) => {
-  const open = ['(', '{', '[', '<','0'];
-  const close = [')', '}', ']', '>','1'];
+  const open = ['(', '{', '[', '<', '0'];
+  const close = [')', '}', ']', '>', '1'];
   const res = close[open.indexOf(symbol)];
-  
+
   for (let i = index; i < arr.length; i++) {
     if (open.includes(arr[i])) {
       i = checkOfSequence(arr[i], i + 1, arr);
-      if(i === false){
+      if (i === false) {
         return false;
       }
       if (open.includes(arr[i])) {
         i = checkOfSequence(arr[i], i + 1, arr);
-        if(i === false){
+        if (i === false) {
           return false;
         }
       }
     }
 
     if (arr[i] === res) {
-      return i+1;
+      return i + 1;
     }
-   
-    if ( close.includes(arr[i])) {
+
+    if (close.includes(arr[i])) {
       return false;
     }
 
@@ -75,8 +75,11 @@ const checkOfSequence = (symbol, index, arr) => {
 
 const checkSequence = (str) => {
   const arr = str.split('');
-  if(checkOfSequence(arr[0], 1, arr) !== arr.length){
-    return false
+  let id = checkOfSequence(arr[0], 1, arr);
+  if (id < arr.length) {
+    if (checkOfSequence(arr[id], id + 1, arr) !== arr.length) {
+      return false
+    }
   }
   return true;
 };
