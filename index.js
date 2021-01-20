@@ -1,3 +1,43 @@
-const nums1 = [1,5,3,6,1,1,1,2,5,6,6,1,5];
-const nums2 = [8,7,1,2,3,6,8,4,9,5,8];
-const unique = [...new Set([...nums1,...nums2])].sort();
+'use strict';
+
+// Деструктуризация - особый способ создания переменных
+
+const monitor = {
+  sizes: {
+    height: {
+      value: 20,
+      scale: 'cm',
+    },
+    width: {
+      value: 56.5,
+      scale: 'cm',
+    },
+  },
+  model: {
+    company: "Samsung",
+    type: 'S24SD300M1'
+  },
+  brightness: 200,
+  contrast: 100,
+  color: 'black',
+  dpi: 250,
+  resolution: '4K',
+};
+
+console.log(monitor.sizes.height.value);
+
+function getDiagonal(monitor) {
+  monitor.sizes.height.value;
+  monitor.sizes.width.value;
+}
+
+// const monitorBright = monitor.brightness;
+
+const { value: monitorH } = monitor.sizes.height;
+const {
+  sizes: {
+    width: { value: w },
+    height: { value: h },
+  },
+  model: { type },
+} = monitor;
