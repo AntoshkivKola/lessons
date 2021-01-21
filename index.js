@@ -10,7 +10,14 @@ const monitor = {
     },
     width: {
       value: 56.5,
-      scale: 'cm',
+      dol: {
+        value: 56.5,
+        la: {
+          value: 56.5,
+          ru: 'dolaru',
+        },
+      },
+
     },
   },
   model: {
@@ -32,12 +39,30 @@ function getDiagonal(monitor) {
 }
 
 // const monitorBright = monitor.brightness;
+//const { value: monitorH } = monitor.sizes.height;
 
-const { value: monitorH } = monitor.sizes.height;
 const {
   sizes: {
-    width: { value: w },
+    width: { value: w,
+      dol: {
+        la: { ru: dollaru }
+      }
+    },
     height: { value: h },
   },
   model: { type },
 } = monitor;
+const {color, ...restOfMonitor} = monitor;
+//=========================== деструктуризацыя массива============================
+const nums = [1,2,3,4,5,6,7,8];
+const [firstNumber, , thirdNumber, ...restOfNums] = nums;
+
+//=========================== деструктуризацыя вчхлдних параметров==========
+function getFullName({firstName, lastName}){
+  return `${firstName}${lastName}`;
+};
+//getFullName({firstName:'ted', lastName:'X'}) tedX
+
+function getMI({color, dpi}){
+  return `${color}, ${dpi}`;
+}; 
