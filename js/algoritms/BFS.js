@@ -1,49 +1,3 @@
-
-class Queue {
-  constructor(...args) {
-    this._head = 0;
-    this._tail = 0;
-    args.forEach((elem) => {
-      this.push(elem);
-    });
-  }
-
-  get size() {
-
-    return this._tail - this._head;
-  }
-
-  push(value) {
-    if (this.size >= this._maxSize) {
-      throw new RangeError('Stack overflow');
-    }
-    this[`_${this.size}`] = value;
-    this._size++;
-    this[this._tail] = value;
-    this._tail++;
-    return this.size;
-  }
-
-  pop() {
-    if (this.size <= 0) {
-      return;
-    }
-    if (this.size) {
-      const lastItem = this[this._head];
-      delete this[this._head++];
-      return lastItem;
-    }
-    const lastItem = this[`_${this.size - 1}`];
-    delete this[`_${this.size - 1}`];
-    this._size--;
-    return lastItem;
-  }
-
-  pick() {
-    return this[`_${this.size - 1}`];
-  }
-}
-
 const graph = new Map();
 graph.set('start', ['a', 'b', 'c']);
 graph.set('b', ['d', 'r']);
@@ -69,8 +23,6 @@ parents.set('fin', undefined);
 
 function bfs(g) {
   const graph = [...g]
-
-  
 
   for(const corteg of graph ){
     corteg[1].forEach((elem)=>{
