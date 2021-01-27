@@ -112,7 +112,7 @@ while (i < graph.size - 1) {
   let neighbros = graph.get(node);
   for(const n of [...neighbros.keys()]){
     let new_cost = cost + neighbros.get(n);
-    if(new_cost < costs.get(n)){
+    if(new_cost <= costs.get(n)){
      costs.set(n, new_cost);
      parents.set(n, node);
     }
@@ -125,8 +125,10 @@ while (i < graph.size - 1) {
 }
 
 function showWay(map){
+  
   let node = getNode('start',map);
   const way = ['start'];
+  debugger;
   while(true){
     way.push(node);
     if(node === 'fin'){
@@ -137,5 +139,22 @@ function showWay(map){
   return way;
 }
 
-console.log(showWay(parents).join(' => ')  + `   weight = ${new_costs.get('fin')}`);
+
+function showWay2(map){
+  
+  let node = map.get('fin');
+  const way = ['fin'];
+  
+  while(true){
+    way.push(node);
+    if(node === 'start'){
+      break;
+    }
+    node = map.get(node);
+  }
+  return way.reverse();
+}
+
+
+console.log(showWay2(parents).join(' => ')  + `   weight = ${new_costs.get('fin')}`);
 
